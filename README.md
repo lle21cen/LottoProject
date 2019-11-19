@@ -1,0 +1,2 @@
+# LottoProject
+Dedicate Lotto Numbers
