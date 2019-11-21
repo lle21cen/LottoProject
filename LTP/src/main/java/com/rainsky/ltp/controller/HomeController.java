@@ -1,10 +1,12 @@
-package com.rainsky.ltp;
+package com.rainsky.ltp.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
+
+import javax.inject.Inject;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -27,6 +29,8 @@ public class HomeController {
 	private Map<Integer, Integer> map = new TreeMap<Integer, Integer>();
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
+	@Inject
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) throws Exception {
 
