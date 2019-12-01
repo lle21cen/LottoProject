@@ -1,14 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<html>
 <head>
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
 
-<P> ${numlist} </P>
+<script type="text/javascript">
+	<c:forEach items="${numbers}" var="item">
+	document.write("${item.num} ${item.num_cnt}<br>");
+	</c:forEach>
+</script>
+
 </body>
 </html>

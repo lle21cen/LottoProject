@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.rainsky.ltp.mapper.InsertLottoNumMapper">
+<mapper namespace="com.rainsky.ltp.mapper.LottoNumMapper">
+	<select id="getLottoNums" resultType="hashmap">
+		SELECT * FROM nums;
+	</select>
+
 	<insert id="insertLottoNum" parameterType="com.rainsky.ltp.vo.LottoNumVO">
 		INSERT INTO nums VALUES 
 		<foreach collection="list" item="item" separator=",">
 			(#{item.num}, #{item.num_cnt})
 		</foreach>
 	</insert>
+	
+	<update id="updateLottoNum" parameterType="Integer">
+		UPDATE nums SET num_cnt = num_cnt+1 WHERE num = #{lottoNum};
+	</update>
 </mapper>
