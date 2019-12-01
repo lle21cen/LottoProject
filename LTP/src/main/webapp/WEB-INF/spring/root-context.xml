@@ -24,10 +24,25 @@
 		<property name="username" value="root"></property>
 		<property name="password" value="1234"></property>
 	</bean>
-
-	<!-- mybatis SqlSessionFactoryBean -->
-	<bean id="sqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
+	
+	<!-- mybatis -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations">
+			<list>
+                <!-- 해당 경로를 통해 xml을 읽어옵니다. -->
+				<value>classpath:mappers/**/*.xml</value>
+			</list>
+		</property>
 	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+                <!-- 해당 Project에서의 Mapper Package를 value로 적어줘야 합니다. ex) com.example.start.Mapper 이러한 형식으로 말입니다. -->
+		<property name="basePackage" value="com.rainsky.ltp.mapper"/> 
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+	
 </beans>
